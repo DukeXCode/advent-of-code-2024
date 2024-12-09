@@ -46,7 +46,8 @@ fn sum_diffs(first_list: &mut Vec<i32>, second_list: &mut Vec<i32>) -> i32 {
 }
 
 fn extract_pair(line: String) -> (i32, i32) {
-    let nums = line.split_whitespace()
+    let nums = line
+        .split_whitespace()
         .map(|x| x.parse::<i32>().unwrap())
         .collect::<Vec<i32>>();
     (nums[0], nums[1])
@@ -55,5 +56,8 @@ fn extract_pair(line: String) -> (i32, i32) {
 fn read_lines(filename: &str) -> Vec<String> {
     let file = File::open(filename).expect("Failed to open file");
     let reader = BufReader::new(file);
-    reader.lines().map(|l| l.expect("Failed to read line")).collect()
+    reader
+        .lines()
+        .map(|l| l.expect("Failed to read line"))
+        .collect()
 }
