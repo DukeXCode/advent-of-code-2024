@@ -1,7 +1,7 @@
 use crate::file_reader::read_lines;
 
 pub fn day2() {
-    let lines = read_lines("day2.txt");
+    let lines = read_lines("input/day2.txt");
 
     let mut safe_reports = 0;
     let mut safe_reports_with_removal = 0;

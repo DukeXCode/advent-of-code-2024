@@ -1,7 +1,7 @@
 use crate::file_reader::read_lines;
 
 pub fn day1() {
-    let lines = read_lines("day1.txt");
+    let lines = read_lines("input/day1.txt");
 
     let mut pairs = Vec::new();
     for line in lines {
