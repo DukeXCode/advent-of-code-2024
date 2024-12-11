@@ -4,13 +4,21 @@ pub fn day2() {
     let lines = read_lines("day2.txt");
 
     let mut safe_reports = 0;
+    let mut safe_reports_with_removal = 0;
     for line in lines {
         let report = split_levels(line);
-        if check_safe(report) {
+        if check_safe(&report) {
             safe_reports += 1;
+        } else if check_safe_with_removal(&report) {
+            safe_reports_with_removal += 1;
         }
     }
-    println!("safe reports: {}", safe_reports);
+    println!(
+        "safe without removal: {}, safe with removal: {}, total: {}",
+        safe_reports,
+        safe_reports_with_removal,
+        safe_reports + safe_reports_with_removal
+    );
 }
 
 fn split_levels(line: String) -> Vec<i32> {
@@ -19,7 +27,7 @@ fn split_levels(line: String) -> Vec<i32> {
         .collect()
 }
 
-fn check_safe(report: Vec<i32>) -> bool {
+fn check_safe(report: &Vec<i32>) -> bool {
     (check_increasing(&report) || check_decreasing(&report)) && check_differences(&report)
 }
 
@@ -44,4 +52,15 @@ fn check_differences(report: &Vec<i32>) -> bool {
         last_level = report[i];
     }
     true
+}
+
+fn check_safe_with_removal(report: &Vec<i32>) -> bool {
+    for i in 0..report.len() {
+        let mut temp_report = report.clone();
+        temp_report.remove(i);
+        if check_safe(&temp_report) {
+            return true;
+        }
+    }
+    false
 }
