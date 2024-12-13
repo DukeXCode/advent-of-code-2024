@@ -1,9 +1,11 @@
 use crate::day1::day1;
 use crate::day2::day2;
+use crate::day3::day3;
 use std::env;
 
 mod day1;
 mod day2;
+mod day3;
 mod file_reader;
 
 fn main() {
@@ -15,6 +17,7 @@ fn main() {
     match args[1].as_str() {
         "1" => day1(),
         "2" => day2(),
+        "3" => day3(),
         _ => println!("Illegal command"),
     }
 }
