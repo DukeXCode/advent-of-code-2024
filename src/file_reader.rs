@@ -14,3 +14,11 @@ pub fn read_lines(filename: &str) -> Vec<String> {
 pub fn read_string(filename: &str) -> String {
     fs::read_to_string(&filename).expect("Failed to read file")
 }
+
+pub fn read_grid(filename: &str) -> Vec<Vec<char>> {
+    fs::read_to_string(filename)
+        .expect("Failed to read file")
+        .lines()
+        .map(|l| l.chars().collect())
+        .collect()
+}
